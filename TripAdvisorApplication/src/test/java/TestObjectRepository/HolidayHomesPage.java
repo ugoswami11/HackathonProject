@@ -25,11 +25,14 @@ public class HolidayHomesPage {
 	@FindBy(how = How.XPATH, using = "//button[text()='Apply']")
 	public WebElement applyGuest;
 	
-	@FindBy(how = How.XPATH, using = "//div[@class='_1wuPwxoN']")
+	@FindBy(how = How.XPATH, using = "//div[@class='_1wuPwxoN']")/*******###***/
 	public WebElement sortBy;
 	
-	@FindBy(how = How.XPATH, using = "//*[@id='component_2']//div[12]/div[6]/span[1]")/****/
-	public WebElement amenitiesShowMore;
+	@FindBy(how = How.XPATH, using = "//div[@class='_16IExTAJ _1S9IhgUs mXy0TSnT _1Jb5DjSv']/div")
+	public List<WebElement> sortByItems;
+	
+	@FindBy(how = How.XPATH, using = "//span[@class='_3ncH7U-p']")
+	public List<WebElement> amenitiesShowMore;
 	
 	@FindBy(how = How.XPATH, using = "//div[@id='component_2']//div[10]/div/label")
 	public WebElement liftAccess;
