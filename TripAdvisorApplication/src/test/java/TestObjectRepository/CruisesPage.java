@@ -33,4 +33,32 @@ public class CruisesPage {
 	
 	@FindBy (how = How.XPATH, using="//label[@class='bUKZfPPw']")
 	public WebElement languages;
+	
+	public void cruiseLineDropDown(){
+		cruiseLine.click();
+	}
+	
+	public void cruiseLineDropDownElements(String cruiseLineValue){
+	for (WebElement cruiseElements : cruiseLineElements) {
+		if(cruiseLineValue.equals(cruiseElements.getText()))
+			cruiseElements.click();
+		}
+	}
+	
+	public void cruiseShipDropDown()
+	{
+		cruiseShip.click();
+	}
+	
+	public void cruiseShipDropDownElements(String cruiseShipValue){
+		for (WebElement cruiseShipElement : cruiseShipElements) {
+			if(cruiseShipValue.equals(cruiseShipElement.getText()))
+				cruiseShipElement.click();
+			}
+	}
+	
+	public void searchCruises()
+	{
+		searchCruises.click();
+	}
 }
