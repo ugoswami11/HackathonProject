@@ -41,8 +41,11 @@ public class CruisesPage {
 	public void cruiseLineDropDownElements(String cruiseLineValue){
 	for (WebElement cruiseElements : cruiseLineElements) {
 		if(cruiseLineValue.equals(cruiseElements.getText()))
+		{
 			cruiseElements.click();
+			break;
 		}
+	    }
 	}
 	
 	public void cruiseShipDropDown()
@@ -53,8 +56,11 @@ public class CruisesPage {
 	public void cruiseShipDropDownElements(String cruiseShipValue){
 		for (WebElement cruiseShipElement : cruiseShipElements) {
 			if(cruiseShipValue.equals(cruiseShipElement.getText()))
+			{
 				cruiseShipElement.click();
+				break;
 			}
+		}
 	}
 	
 	public void searchCruises()
