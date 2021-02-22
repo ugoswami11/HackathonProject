@@ -37,7 +37,6 @@ public class CruisesPage {
 
 	@FindBy(how = How.XPATH, using = "//div[@class='_30ZCn9lR']/div[4]")
 	public WebElement launchedYear;
-<<<<<<< HEAD
 
 	@FindBy(how = How.XPATH, using = "//label[@class='bUKZfPPw']")
 	public List<WebElement> languageElements;
@@ -73,41 +72,11 @@ public class CruisesPage {
 
 		for (WebElement cruiseShipElement : cruiseShipElements) {
 			if (cruiseShipValue.equals(cruiseShipElement.getText())) {
-=======
-	
-	@FindBy (how = How.XPATH, using="//label[@class='bUKZfPPw']")
-	public WebElement languages;
-	
-	public void cruiseLineDropDown(){
-		cruiseLine.click();
-	}
-	
-	public void cruiseLineDropDownElements(String cruiseLineValue){
-	for (WebElement cruiseElements : cruiseLineElements) {
-		if(cruiseLineValue.equals(cruiseElements.getText()))
-		{
-			cruiseElements.click();
-			break;
-		}
-	    }
-	}
-	
-	public void cruiseShipDropDown()
-	{
-		cruiseShip.click();
-	}
-	
-	public void cruiseShipDropDownElements(String cruiseShipValue){
-		for (WebElement cruiseShipElement : cruiseShipElements) {
-			if(cruiseShipValue.equals(cruiseShipElement.getText()))
-			{
->>>>>>> a61a699cfd6ea78ea5610e3682b58431c1e94ae9
 				cruiseShipElement.click();
 				break;
 			}
 		}
 	}
-<<<<<<< HEAD
 
 	public void searchCruises() {
 		try {
@@ -167,11 +136,4 @@ public class CruisesPage {
 
 		}
 	}
-=======
-	
-	public void searchCruises()
-	{
-		searchCruises.click();
-	}
->>>>>>> a61a699cfd6ea78ea5610e3682b58431c1e94ae9
 }
