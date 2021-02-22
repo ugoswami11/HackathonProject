@@ -4,7 +4,7 @@
 <suite name="Functional Testing" parallel="none">
 	<test name="test">
 		<classes>
-			
+			<class name="TestScenarios.test"></class>
 		</classes>
 	</test>
 

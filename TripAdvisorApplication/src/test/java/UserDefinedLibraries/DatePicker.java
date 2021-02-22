@@ -11,9 +11,9 @@ import org.openqa.selenium.WebDriver;
 public class DatePicker {
 	
 	
-	public static void getDateValue(String dateOfJourney, WebDriver driver, int calNum) {
+	public static void getDateValue(String dateOfJourney, WebDriver driver) {
 		
-		DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date currentDate = new Date();
 		
 		 try {
@@ -38,7 +38,7 @@ public class DatePicker {
 			 
 			 while(true) {
 				 //The month and year displayed on the calendar
-				 String displayDate = driver.findElement(By.xpath("//div[@class='dropdown open']//th[@role='button'][2]")).getText();
+				 String displayDate = driver.findElement(By.xpath("//div[@class='_2DSA78he']/div[1]/div[1]")).getText();
 				// String displayDate2 = driver.findElement(By.xpath("//*[@id=\"CategoryDetail\"]//table/tbody[2]/tr[1]//tr[1]/th[2]")).getText();
 				 
 				 //Comparing the expMonthYear to displayDate to navigate to the correct month
@@ -47,7 +47,7 @@ public class DatePicker {
 					 //if the expMonthYear is equal to the displayDate then the date is selected from the calendar 
 					 //the dates are located by xpath
 					 //the day which is stored in dayInt is selected and breaks the loop
-					 driver.findElement(By.xpath("//*[@id='CategoryDetail']//table/tbody["+calNum+"]/tr[1]/td[3]//table/tbody/tr/td[text()='"+dayInt+"']")).click();
+					 driver.findElement(By.xpath("//div[@class='_2DSA78he']/div[1]/div[3]/div/div[text()='"+dayInt+"']")).click();
 					 break;
 				 }
 				 
@@ -56,7 +56,10 @@ public class DatePicker {
 					 //if the expMonthYear and displayDate is not equal
 					 //It compares date to be selected to the current date, if it return greter than 0 that means the date is present in the future
 					 //And clicks the right arrow on the calendar to change the month
-					 driver.findElement(By.xpath("//div[@class='dropdown open']//th[@role='button'][3]")).click();
+					 driver.findElement(By.xpath("//div[@class='B_DhIlZY']/div[2]")).click();
+				 }
+				 else if(dateTypeOfdateOfJouney.compareTo(currentDate)<0) {
+					 driver.findElement(By.xpath("//div[@class='B_DhIlZY']/div[1]")).click();
 				 }
 				 
 				 
