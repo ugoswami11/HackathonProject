@@ -1,4 +1,4 @@
-package TestObjectRepository;
+package testObjectRepository;
 
 import java.util.Iterator;
 import java.util.List;
@@ -15,7 +15,7 @@ public class CruisesPage {
 
 	final WebDriver driver;
 	public static WebDriverWait wait;
-	public static String passenger, crew, launchedYearText;
+	public static String passenger="", crew="", launchedYearText="";
 
 	@FindBy(how = How.XPATH, using = "//*[@id='cruise_line_dropdown']")
 	public WebElement cruiseLine;
@@ -108,9 +108,11 @@ public class CruisesPage {
 
 	public String[] getLanguages() {
 		int size = languageElements.size();
+		String s;
 		String[] languages = new String[size];
 		for (int i = 0; i < size; i++) {
-			languages[i] = languageElements.get(i).getText();
+				s=languageElements.get(i).getText();
+	            languages[i]=s.substring(0, (s.length()-3));
 		}
 		return languages;
 	}

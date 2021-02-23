@@ -1,10 +1,5 @@
-package UserDefinedLibraries;
+package userDefinedLibraries;
 
-/* Class  : Read and write - Excel
- * Author : Aishwariya
- * Date   : 24-04-2020
- * ID     : 851297
- */
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,33 +23,33 @@ public class ExcelReadWrite {
 	public static int row;
 	public static XSSFCell cell;
 	public static XSSFRow Row;
-	public static String category1;
+	public static String[] data;
 
-	public static int readexcel(){
+	public static String[] readexcel(){
 		try {
-			// Get the source excel file
-			src = new File(System.getProperty("user.dir")
-					+ "\\src\\test\\java\\datatables\\CourseraDetails.xlsx");
-			// Create FileInputStream object
-			fileip = new FileInputStream(src);
-			workbook = new XSSFWorkbook(fileip);
-			sheet = workbook.getSheetAt(0);
+			//GET THE SOURCE EXCEL FILE
+			File src = new File(System.getProperty("user.dir")+"\\src\\test\\java\\dataTable\\TripAdvisor.xlsx");
+			// CREATE FILEINPUTSTREAM OBJECT
+			FileInputStream fileip = new FileInputStream(src);
+			XSSFWorkbook workbook = new XSSFWorkbook(fileip);
+			XSSFSheet sheet = workbook.getSheetAt(0);
+			String[] testdata = new String[10];
+			for (int i = 0; i < 8; i++) {
+				// GET DATA FROM THE EXCEL SHEET
+				testdata[i] = (sheet.getRow(1).getCell(i)).toString();
+				System.out.println(testdata[i]);
 
-			for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-				if (i == 1) {
-					// Get input from row = i and cell = 0
-					category1 = (sheet.getRow(i).getCell(0)).getStringCellValue();
-					row = i;
-					break;
-				}
 			}
+			
+			data = testdata;
+			fileip.close();
 		} catch (FileNotFoundException e) {
-			FailReport.reportFail(e.getMessage());
+			e.printStackTrace();
 		} catch (IOException e) {
-			FailReport.reportFail(e.getMessage());
+			e.printStackTrace();
 		}
-
-		return row;
+		
+		return data;
 	}
 
 	// Write data into excel sheet

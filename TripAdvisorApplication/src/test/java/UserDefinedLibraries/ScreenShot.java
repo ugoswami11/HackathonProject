@@ -1,29 +1,24 @@
+package userDefinedLibraries;
+
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-
-//TAKING THE SCREEENSHOT
-
 public class ScreenShot {
-	public static void ScreenshotTC(WebDriver driver) {
-		String filename;
-		File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		filename = new SimpleDateFormat("yyyyMMddhhmmss'.jpeg'").format(new Date());
-			File destination = new File(
-					System.getProperty("user.dir")+"\\TestCaseScreenShots\\" + filename );
-		try {
-			FileUtils.copyFile(src, destination);
+	public static String screenShotTC(WebDriver ldriver){
+		File sourceFile = ((TakesScreenshot) ldriver).getScreenshotAs(OutputType.FILE);
+		
+		File destFile = new File(
+				System.getProperty("user.dir") + "\\screenshot\\" + System.currentTimeMillis() + ".png");
+		try { 
+			//copy the screenshot to desired location using copyFile method
+			FileUtils.copyFile(sourceFile, destFile);
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-		
+		return destFile.getPath();
 	}
-
 }

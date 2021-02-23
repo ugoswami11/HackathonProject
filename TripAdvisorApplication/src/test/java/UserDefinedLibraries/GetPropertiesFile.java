@@ -1,4 +1,4 @@
-package UserDefinedLibraries;
+package userDefinedLibraries;
 
 import java.io.FileInputStream;
 import java.util.Properties;

@@ -1,4 +1,4 @@
-package UserDefinedLibraries;
+package userDefinedLibraries;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -13,7 +13,7 @@ public class DatePicker {
 	
 	public static void getDateValue(String dateOfJourney, WebDriver driver) {
 		
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
 		Date currentDate = new Date();
 		
 		 try {

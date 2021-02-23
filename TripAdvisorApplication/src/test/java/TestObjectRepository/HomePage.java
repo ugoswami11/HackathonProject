@@ -1,4 +1,4 @@
-package TestObjectRepository;
+package testObjectRepository;
 
 
 import java.util.List;

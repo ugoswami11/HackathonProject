@@ -1,10 +1,6 @@
-package UserDefinedLibraries;
+package userDefinedLibraries;
 
-/* Class  : Extent Report
- * Author : Aishwariya
- * Date   : 24-04-2020
- * ID     : 851297
- */
+
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
