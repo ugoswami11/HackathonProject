@@ -40,7 +40,7 @@ public class DriverSetup {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		//Fetch the url
 		driver.get(url);
-		//Delete all records
+		//Delete all cookies
 		driver.manage().deleteAllCookies();
 
 		return driver;
