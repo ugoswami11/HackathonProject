@@ -1,19 +1,14 @@
 package userDefinedLibraries;
 
+//Import all Necessary Libraries
 import java.util.Properties;
-
-/* Class  : Driver instantiation
- * Author : Aishwariya
- * Date   : 24-04-2020
- * ID     : 851297
- */
-
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+//To Instantiate Driver
 public class DriverSetup {
 
 	public static Properties prop = GetPropertiesFile.getPropertiesInstance();
@@ -38,10 +33,14 @@ public class DriverSetup {
 			System.setProperty("webdriver.gecko.driver", exePath);
 			driver = new FirefoxDriver();
 		}
-
+		
+		//Maximize the Window
 		driver.manage().window().maximize();
+		//Implement Wait
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		//Fetch the url
 		driver.get(url);
+		//Delete all records
 		driver.manage().deleteAllCookies();
 
 		return driver;
