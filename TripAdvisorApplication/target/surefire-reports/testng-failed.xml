@@ -4,14 +4,18 @@
   <listeners>
     <listener class-name="userDefinedLibraries.RetryListener"/>
   </listeners>
-  <test thread-count="5" name="test(failed)" verbose="0">
+  <test thread-count="5" name="Regression Test One(failed)" verbose="0">
+    <groups>
+      <run>
+        <include name="Regression Test One"/>
+      </run>
+    </groups>
     <classes>
-      <class name="testScenarios.test">
+      <class name="testScenarios.TripAdvisorTestScenarios">
         <methods>
-          <include name="driverConfig"/>
           <include name="sortBy"/>
         </methods>
-      </class> <!-- testScenarios.test -->
+      </class> <!-- testScenarios.TripAdvisorTestScenarios -->
     </classes>
-  </test> <!-- test(failed) -->
+  </test> <!-- Regression Test One(failed) -->
 </suite> <!-- Failed suite [Functional Testing] -->

@@ -16,52 +16,52 @@ public class CruisesPage {
 
 	final WebDriver driver;
 	public static WebDriverWait wait;
-	public static String passenger="", crew="", launchedYearText="";
+	public static String passenger = "", crew = "", launchedYearText = "";
 
-	//To locate the Cruise Line dropdown button
+	// To locate the Cruise Line dropdown button
 	@FindBy(how = How.XPATH, using = "//*[@id='cruise_line_dropdown']")
 	public WebElement cruiseLine;
 
-	//To locate the all the elements in Cruise Line dropdown list
+	// To locate the all the elements in Cruise Line dropdown list
 	@FindBy(how = How.XPATH, using = "//div[@id='component_1']/div/div[3]/div/div[1]/div/div[2]/div")
 	public List<WebElement> cruiseLineElements;
 
-	//To locate the Cruise Ship dropdown button
+	// To locate the Cruise Ship dropdown button
 	@FindBy(how = How.XPATH, using = "//div[@id='component_1']/div/div[3]/div/div[2]")
 	public WebElement cruiseShip;
 
-	//To locate the all the elements in Cruise Ship dropdown list
+	// To locate the all the elements in Cruise Ship dropdown list
 	@FindBy(how = How.XPATH, using = "//div[@class='CfqcQ1jD option']")
 	public List<WebElement> cruiseShipElements;
 
-	//To locate the Search button
+	// To locate the Search button
 	@FindBy(how = How.XPATH, using = "//button[text()='Search']")
 	public WebElement searchCruises;
 
-	//To locate the Passenger and Crew textbox
+	// To locate the Passenger and Crew textbox
 	@FindBy(how = How.XPATH, using = "//*[@id='ship_overview']//div[1]/div[1]/div[2]/div[1]")
 	public WebElement passengersAndCrew;
 
-	//To locate the Launched year textbox
+	// To locate the Launched year textbox
 	@FindBy(how = How.XPATH, using = "//div[@class='_30ZCn9lR']/div[4]")
 	public WebElement launchedYear;
 
-	//To locate the all the elements for available languages
+	// To locate the all the elements for available languages
 	@FindBy(how = How.XPATH, using = "//label[@class='bUKZfPPw']")
 	public List<WebElement> languageElements;
 
-	//To implement wait
+	// To implement wait
 	public CruisesPage(WebDriver driver) {
 		this.driver = driver;
 		wait = new WebDriverWait(driver, 30);
 	}
-	
-	//To click on the Cruise Line dropdown button
+
+	// To click on the Cruise Line dropdown button
 	public void cruiseLineDropDown() {
 		cruiseLine.click();
 	}
-	
-	//To select the input from the Cruise Line dropdown options
+
+	// To select the input from the Cruise Line dropdown options
 	public void cruiseLineDropDownElements(String cruiseLineValue) {
 
 		wait.until(ExpectedConditions.visibilityOfAllElements(cruiseLineElements));
@@ -73,13 +73,13 @@ public class CruisesPage {
 			}
 		}
 	}
-	
-	//To click on the Cruise Ship dropdown button
+
+	// To click on the Cruise Ship dropdown button
 	public void cruiseShipDropDown() {
 		cruiseShip.click();
 	}
 
-	//To select the input from the Cruise Ship dropdown options
+	// To select the input from the Cruise Ship dropdown options
 	public void cruiseShipDropDownElements(String cruiseShipValue) {
 
 		wait.until(ExpectedConditions.visibilityOfAllElements(cruiseShipElements));
@@ -92,7 +92,7 @@ public class CruisesPage {
 		}
 	}
 
-	//To click on the Search button
+	// To click on the Search button
 	public void searchCruises() {
 		try {
 			Thread.sleep(3000);
@@ -103,7 +103,7 @@ public class CruisesPage {
 		searchCruises.click();
 	}
 
-	//To get the number of passengers and crew members for the selected cruise
+	// To get the number of passengers and crew members for the selected cruise
 	public void getpassengerAndCrew() {
 		String passengerNcrew = passengersAndCrew.getText();
 
@@ -112,7 +112,7 @@ public class CruisesPage {
 		crew = crew + passengerNcrew.substring(28, passengerNcrew.length());
 	}
 
-	//To get the launch year for the selected cruise
+	// To get the launch year for the selected cruise
 	public String setLaunchedYear() {
 		String launchYearText = launchedYear.getText();
 
@@ -121,19 +121,19 @@ public class CruisesPage {
 		return launchedYearText;
 	}
 
-	//To get the languages available for the selected cruise
+	// To get the languages available for the selected cruise
 	public String[] getLanguages() {
 		int size = languageElements.size();
 		String s;
 		String[] languages = new String[size];
 		for (int i = 0; i < size; i++) {
-				s=languageElements.get(i).getText();
-	            languages[i]=s.substring(0, (s.length()-3));
+			s = languageElements.get(i).getText();
+			languages[i] = s.substring(0, (s.length() - 3));
 		}
 		return languages;
 	}
 
-	//To perfom window handling
+	// To perfom window handling
 	public void changeWindowHandle() {
 		// It will return the parent window name as a String
 		String parent = driver.getWindowHandle();
@@ -149,8 +149,6 @@ public class CruisesPage {
 
 			if (!parent.equals(child_window)) {
 				driver.switchTo().window(child_window);
-
-				System.out.println(driver.switchTo().window(child_window).getTitle());
 			}
 
 		}

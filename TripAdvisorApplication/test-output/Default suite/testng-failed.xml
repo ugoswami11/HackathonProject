@@ -3,12 +3,26 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestScenarios.test">
+      <class name="testScenarios.TripAdvisorTestScenarios">
         <methods>
-          <include name="driverConfig"/>
+          <include name="setGuest"/>
+          <include name="checkOutDate"/>
+          <include name="cruiseShip"/>
           <include name="sortBy"/>
+          <include name="languageValue"/>
+          <include name="hotelNames"/>
+          <include name="changeWindow"/>
+          <include name="pricePerNight"/>
+          <include name="launchedYearValue"/>
+          <include name="selectDestination"/>
+          <include name="PassengerCrewValue"/>
+          <include name="liftAccess"/>
+          <include name="checkInDate"/>
+          <include name="cruises"/>
+          <include name="cruiseLine"/>
+          <include name="totalPrice"/>
         </methods>
-      </class> <!-- TestScenarios.test -->
+      </class> <!-- testScenarios.TripAdvisorTestScenarios -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

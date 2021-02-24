@@ -33,14 +33,14 @@ public class DriverSetup {
 			System.setProperty("webdriver.gecko.driver", exePath);
 			driver = new FirefoxDriver();
 		}
-		
-		//Maximize the Window
+
+		// Maximize the Window
 		driver.manage().window().maximize();
-		//Implement Wait
+		// Implement Wait
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		//Fetch the url
+		// Fetch the url
 		driver.get(url);
-		//Delete all cookies
+		// Delete all cookies
 		driver.manage().deleteAllCookies();
 
 		return driver;

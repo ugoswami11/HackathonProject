@@ -17,14 +17,17 @@ public class HomePage {
 	final WebDriver driver;
 	public static WebDriverWait wait;
 	
-	@FindBy(how =How.XPATH, using = "//span[contains(text(),'Holiday Homes')]")			//locate "Holiday Homes" button
+	//locate "Holiday Homes" button
+	@FindBy(how =How.XPATH, using = "//span[contains(text(),'Holiday Homes')]")			
 	public WebElement holidayHomesBtn;
 	
+	//locate "Where To" search box
 	@FindBy(how =How.XPATH, using = "//div[@class='i3bZ_gBa _2RTs3_Ee _3TPJs5_m _3awdcWrG']//input[@placeholder='Where to?']")
-	public WebElement whereTo;									//locate "Where To" search box
+	public WebElement whereTo;									
 	
+	//locate "Where To" dropdown
 	@FindBy(how = How.XPATH, using = "//div[@class='_27pk-lCQ']/a")
-	public List<WebElement> whereToDropDown; 							//locate "Where To" dropdown
+	public List<WebElement> whereToDropDown; 							
 	
 	//waits untill the page get loaded
 	public HomePage(WebDriver driver) {
