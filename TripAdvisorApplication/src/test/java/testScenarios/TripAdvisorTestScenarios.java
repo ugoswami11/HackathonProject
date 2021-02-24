@@ -1,5 +1,12 @@
 package testScenarios;
 
+/** 
+ * This code is defined to create Testcases
+ * @author Four_0_Four_Finders
+ * Date:25/02/2021 
+ */
+
+//Import All Necssary Libraries
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -24,6 +31,7 @@ import userDefinedLibraries.ExtentReportManager;
 import userDefinedLibraries.FailReport;
 import userDefinedLibraries.ScreenShot;
 
+
 public class TripAdvisorTestScenarios {
 	
 	public static HomePage homePage;
@@ -38,6 +46,7 @@ public class TripAdvisorTestScenarios {
 	public static ExtentReports report;
 	public static ExtentTest logger;
 	
+	//Invoking Browser
 	@BeforeGroups("Smoke Test One")
 	public void driverConfig() {
 		browser = prop.getProperty("browser");
@@ -50,11 +59,13 @@ public class TripAdvisorTestScenarios {
 		cruises = PageFactory.initElements(driver, CruisesPage.class);
 	}
 	
+	//Invoking Excel Sheet In The Program
 	@Test (priority=0, groups= {"Smoke Test One"})
 	public void readData() {
 		ExcelReadWrite.readexcel();
 	}
 	
+	//Choosing The Destination from Tripadvisor.in
 	@Test (priority=1, groups= {"Smoke Test One"})
 	public void selectDestination() {
 		logger = report.createTest("Selecting Destination For Holiday-Home");
@@ -65,7 +76,7 @@ public class TripAdvisorTestScenarios {
 		logger.log(Status.INFO, "Giving value for Destination");
 		homePage.selectDestination();
 		
-		
+			//Taking Scrrenshot of Holiday Homes Page
 			try {
                               ScreenShot.takeSnapShot(driver);
 			} catch (Exception e) {
@@ -80,6 +91,7 @@ public class TripAdvisorTestScenarios {
 		}
 	}
 	
+	//Giving value for Check-In Date from calender
 	@Test (priority=2, groups= {"Smoke Test One"})
 	public void checkInDate() {
 		logger = report.createTest("Giving value for Check-In Date");
@@ -95,6 +107,7 @@ public class TripAdvisorTestScenarios {
 		}	
 	}
 	
+	//Giving value for Check-Out Date from calender
 	@Test (priority =3, groups= {"Smoke Test One"})
 	public void checkOutDate() {
 		logger = report.createTest("Giving value for Check-Out Date");
@@ -108,6 +121,7 @@ public class TripAdvisorTestScenarios {
 		}
 	}
 	
+	//Giving Value For Guest
 	@Test (priority =4, groups= {"Smoke Test One"})
 	public void setGuest() {
 		
@@ -124,6 +138,7 @@ public class TripAdvisorTestScenarios {
 		}
 	}
 	
+	//Sorting The Hotel's Details Based On The Filters Available 
 	@Test (priority = 5, groups= {"Regression Test One"})
 	public void sortBy() {
 		logger = report.createTest("Sort Hotel names");
@@ -138,6 +153,7 @@ public class TripAdvisorTestScenarios {
 		}
 	}
 	
+	//Clicking On The Lift Access Check Box
 	@Test (priority = 6, groups= {"Regression Test One"})
 	public void liftAccess() {
 		logger = report.createTest("Clicking on lift access Check-Box");
@@ -160,6 +176,7 @@ public class TripAdvisorTestScenarios {
 		}
 	}
 	
+	//Featching Top-3 Hotel Names Based On Filters Applied
 	@Test (priority = 7, groups= {"Regression Test One"})
 	public void hotelNames() {
 		logger = report.createTest("Featching Top-3 Hotel Names Based on filters");
@@ -182,6 +199,7 @@ public class TripAdvisorTestScenarios {
 		
 	}
 	
+	//Featching Top-3 Hotel's Total-Price Based On Filters Applied
 	@Test (priority = 8, groups= {"Regression Test One"})
 	public void totalPrice() {
 		logger = report.createTest("Featching Top-3 Hotel's Total-Price Based on filters");
@@ -200,6 +218,7 @@ public class TripAdvisorTestScenarios {
 		}
 	}
 	
+	//Featching Top-3 Hotel's Price Per Night Based On Filters Applied
 	@Test (priority =9, groups= {"Regression Test One"})
 	public void pricePerNight() {
 		logger = report.createTest("Featching Top-3 Hotel's Price Per Night Based on filters");
@@ -208,6 +227,7 @@ public class TripAdvisorTestScenarios {
 		text = holidayHomes.getPerNightPrice(listSize);
 		
 	     // Please check its working or not
+		//Screenshot Taken After appling All Filters
 		try {
                               ScreenShot.takeSnapShot(driver);
 			} catch (Exception e) {
@@ -225,6 +245,7 @@ public class TripAdvisorTestScenarios {
 		}
 	}
 	
+	//Clicking On Cruises Menu
 	@Test (priority= 10, groups= {"Smoke Test Two"})
 	public void cruises() {
 		logger = report.createTest("Clicking On Cruises Tab");
@@ -238,6 +259,7 @@ public class TripAdvisorTestScenarios {
 		}
 	}
 	
+	//Selecting Value For Cruise Line
 	@Test (priority =11, groups= {"Smoke Test Two"})
 	public void cruiseLine() {
 		logger = report.createTest("Selecting Value for Cruise Line");
@@ -253,6 +275,7 @@ public class TripAdvisorTestScenarios {
 		}
 	}	
 	
+	//Selecting Value For Cruise Ship
 	@Test (priority = 12, groups= {"Smoke Test Two"})
 	public void cruiseShip() {
 		logger = report.createTest("Selecting Value for Cruise Ship");
@@ -276,6 +299,7 @@ public class TripAdvisorTestScenarios {
 		}
 	}
 	
+	//Moving To The New Window
 	@Test (priority = 13, groups= {"Smoke Test Two"})
 	public void changeWindow() {
 		logger = report.createTest("Moving To the new Window");
@@ -296,6 +320,7 @@ public class TripAdvisorTestScenarios {
 		}
 	}
 	
+	//Featching The Value Of Passenger & Crew
 	@Test (priority = 14, groups= {"Regression Test Two"})
 	public void PassengerCrewValue() {
 		
@@ -311,6 +336,7 @@ public class TripAdvisorTestScenarios {
 		}
 	}
 	
+	//Featching The Value Of Launched Year
 	@Test (priority = 15, groups= {"Regression Test Two"})
 	public void launchedYearValue() {
 		
@@ -333,6 +359,7 @@ public class TripAdvisorTestScenarios {
 		}
 	}
 	
+	//Featching The Value Of Languages
 	@Test(priority = 16, groups= {"Regression Test Two"})
 	public void languageValue() {
 		logger = report.createTest("Featching the value of Languages");
@@ -350,6 +377,7 @@ public class TripAdvisorTestScenarios {
 		}
 	}
 	
+	//Closing The Browser
 	@AfterGroups ("Regression Test Two")
 	public void closeBrowser() {
 		logger = report.createTest("Closing the Browser");
