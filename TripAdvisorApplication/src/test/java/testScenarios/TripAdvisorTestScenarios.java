@@ -187,7 +187,9 @@ public class TripAdvisorTestScenarios {
 		String[] text = new String[listSize];
 		text =holidayHomes.getHotelNames(listSize);
 		
-		for(int i=0;i<text.length;i++) {
+		for(int i=0;i<text.length;i++)
+		{
+			ExcelReadWrite.writeExcel(text[i],0,i+1);
 			System.out.println(text[i]);
 		}
 		logger.log(Status.INFO, "Top-3 Hotel names have been selected");
@@ -207,7 +209,9 @@ public class TripAdvisorTestScenarios {
 		String[] text = new String[listSize];
 		text = holidayHomes.getTotalPrice(listSize);
 		
-		for(int i=0;i<text.length;i++) {
+		for(int i=0;i<text.length;i++)
+		{
+			ExcelReadWrite.writeExcel(text[i],1,i+1);
 			System.out.println(text[i]);
 		}
 		logger.log(Status.INFO, "Top-3 Hotel's Total-Price have been selected");
@@ -234,7 +238,9 @@ public class TripAdvisorTestScenarios {
                               e.printStackTrace();
 			}
 		
-		for(int i=0;i<text.length;i++) {
+		for(int i=0;i<text.length;i++)
+		{
+			ExcelReadWrite.writeExcel(text[i],2,i+1);
 			System.out.println(text[i]);
 		}
 		logger.log(Status.INFO, "Top-3 Hotel's Price Per Night have been selected");
@@ -326,8 +332,11 @@ public class TripAdvisorTestScenarios {
 		
 		logger = report.createTest("Featching the value of Passenger & Crew");
 	try{
+		int i=0;
 		cruises.getpassengerAndCrew();
 		System.out.println(cruises.passenger+"\t"+cruises.crew);
+		ExcelReadWrite.writeExcel(CruisesPage.passenger,3,i+1);
+		ExcelReadWrite.writeExcel(CruisesPage.crew, 4, i+1); 
 		logger.log(Status.INFO, "Passenger & Crew's value have been featched");
 		logger.log(Status.PASS, "Passenger & Crew's value have been written successfully");
 		
@@ -344,6 +353,7 @@ public class TripAdvisorTestScenarios {
 	try{
 		String text = cruises.setLaunchedYear();
 		System.out.println(text);
+		ExcelReadWrite.writeExcel(text,5,1);
 		
 		try {
                           ScreenShot.takeSnapShot(driver);
@@ -366,8 +376,9 @@ public class TripAdvisorTestScenarios {
 	try{
 		languages = cruises.getLanguages();
 		
-		for(int i=0;i<languages.length;i++) {
-			System.out.println(languages[i]);
+		for(int i=1;i<languages.length;i++)
+		{
+			ExcelReadWrite.writeExcel(languages[i],6,i);
 		}
 		logger.log(Status.INFO, "Languages value have been featched");
 		logger.log(Status.PASS, "Languages value have been written successfully");
