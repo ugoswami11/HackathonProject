@@ -15,15 +15,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 //To utilize the data from the Excel and return the outputs in the Excel
 public class ExcelReadWrite {
 
-	public static File src;
-	public static FileInputStream fileip;
-	public static FileOutputStream fileop;
-	public static XSSFWorkbook workbook;
-	public static XSSFSheet sheet;
-	public static String val1;
-	public static int row;
-	public static XSSFCell cell;
-	public static XSSFRow Row;
 	public static String[] data;
 
 	public static String[] readexcel(){
@@ -55,19 +46,36 @@ public class ExcelReadWrite {
 
 	// Write data into excel sheet
 	public static void writeexcel() {
-		try {
-			fileip.close();
-			// Create an object of FileOutputStream class to create write data in excel file
-			fileop = new FileOutputStream(src);
-			// write data in the excel file
-			workbook.write(fileop);
-			// close output stream
-			fileop.close();
+		File src=new File(System.getProperty("user.dir")+"\\src\\test\\java\\dataTable\\TripAdvisor.xlsx");
+		FileInputStream file;
+		try
+		{
 
-		} catch (FileNotFoundException e) {
-			FailReport.reportFail(e.getMessage());
-		} catch (IOException e) {
-			FailReport.reportFail(e.getMessage());
+			file=new FileInputStream(src);
+			XSSFWorkbook wb=new XSSFWorkbook(file);
+			XSSFSheet sheet=wb.getSheetAt(1);
+			XSSFRow row=null;
+			Cell cell=null;
+			if(column == 0) {
+				row=sheet.createRow(rowno);
+			}
+			else {
+				row = sheet.getRow(rowno);
+			}
+			cell=row.createCell(column);
+			cell.setCellValue(result);
+			FileOutputStream output=new FileOutputStream(src);
+			wb.write(output);
+			wb.close();
+			
+		}
+		catch(FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
 		}
 	}
 }
