@@ -11,36 +11,46 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+//To perform all the functionalities of the Cruises page in Tripadvisor.in
 public class CruisesPage {
 
 	final WebDriver driver;
 	public static WebDriverWait wait;
 	public static String passenger="", crew="", launchedYearText="";
 
+	//To locate the Cruise Line dropdown button
 	@FindBy(how = How.XPATH, using = "//*[@id='cruise_line_dropdown']")
 	public WebElement cruiseLine;
 
+	//To locate the all the elements in Cruise Line dropdown list
 	@FindBy(how = How.XPATH, using = "//div[@id='component_1']/div/div[3]/div/div[1]/div/div[2]/div")
 	public List<WebElement> cruiseLineElements;
 
+	//To locate the Cruise Ship dropdown button
 	@FindBy(how = How.XPATH, using = "//div[@id='component_1']/div/div[3]/div/div[2]")
 	public WebElement cruiseShip;
 
+	//To locate the all the elements in Cruise Ship dropdown list
 	@FindBy(how = How.XPATH, using = "//div[@class='CfqcQ1jD option']")
 	public List<WebElement> cruiseShipElements;
 
+	//To locate the Search button
 	@FindBy(how = How.XPATH, using = "//button[text()='Search']")
 	public WebElement searchCruises;
 
+	//To locate the Passenger and Crew textbox
 	@FindBy(how = How.XPATH, using = "//*[@id='ship_overview']//div[1]/div[1]/div[2]/div[1]")
 	public WebElement passengersAndCrew;
 
+	//To locate the Launched year textbox
 	@FindBy(how = How.XPATH, using = "//div[@class='_30ZCn9lR']/div[4]")
 	public WebElement launchedYear;
 
+	//To locate the all the elements for available languages
 	@FindBy(how = How.XPATH, using = "//label[@class='bUKZfPPw']")
 	public List<WebElement> languageElements;
 
+	//To implement wait
 	public CruisesPage(WebDriver driver) {
 		this.driver = driver;
 		wait = new WebDriverWait(driver, 30);
