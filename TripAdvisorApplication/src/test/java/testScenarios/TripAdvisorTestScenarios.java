@@ -82,10 +82,10 @@ public class TripAdvisorTestScenarios {
 	
 	@Test (priority=2, groups= {"Smoke Test One"})
 	public void checkInDate() {
-		logger = report.createTest("Giving value for Check-In and Check-Out Date");
+		logger = report.createTest("Giving value for Check-In Date");
 	try{	
 		holidayHomes.checkInDateClick();
-		logger.log(Status.INFO, "Selecting Check-In Date");
+		logger.log(Status.INFO, "Clicking On Check-In Date");
 		holidayHomes.setCheckInDate(ExcelReadWrite.data[1]);
 		
 		     try {
@@ -94,8 +94,8 @@ public class TripAdvisorTestScenarios {
                               e.printStackTrace();
 			}
 		
-		logger.log(Status.INFO, "Selecting Check-Out Date");
-		logger.log(Status.PASS, "Dates has been selected Successfully")
+		logger.log(Status.INFO, "Selecting Check-In Date");
+		logger.log(Status.PASS, "Date has been selected Successfully")
 	   }catch (Exception e) {
 			FailReport.reportFail(e.getMessage());
 		}	
