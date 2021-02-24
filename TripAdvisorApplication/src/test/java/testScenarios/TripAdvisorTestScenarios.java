@@ -8,12 +8,21 @@ import org.testng.annotations.AfterGroups;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+
+
 import testObjectRepository.CruisesPage;
 import testObjectRepository.HolidayHomesPage;
 import testObjectRepository.HomePage;
 import userDefinedLibraries.DriverSetup;
 import userDefinedLibraries.ExcelReadWrite;
 import userDefinedLibraries.GetPropertiesFile;
+
+import userDefinedLibraries.ExtentReportManager;
+import userDefinedLibraries.FailReport;
+import userDefinedLibraries.ScreenShot;
 
 public class TripAdvisorTestScenarios {
 	
@@ -26,11 +35,16 @@ public class TripAdvisorTestScenarios {
 	public static String[] languages;
 	public static Properties prop = GetPropertiesFile.getPropertiesInstance();
 	
+	public static ExtentReports report;
+	public static ExtentTest logger;
+	
 	@BeforeGroups("Smoke Test One")
 	public void driverConfig() {
 		browser = prop.getProperty("browser");
 		driver = DriverSetup.driverInstantiate(browser);
-
+                
+		report = ExtentReportManager.getReportInstance();
+		
 		homePage = PageFactory.initElements(driver, HomePage.class);
 		holidayHomes = PageFactory.initElements(driver, HolidayHomesPage.class);
 		cruises = PageFactory.initElements(driver, CruisesPage.class);
@@ -43,15 +57,48 @@ public class TripAdvisorTestScenarios {
 	
 	@Test (priority=1, groups= {"Smoke Test One"})
 	public void selectDestination() {
+		logger = report.createTest("Selecting Destination For Holiday-Home");
+	try{	
 		homePage.holidayHomeButton();
+		logger.log(Status.INFO, "Clicking On Holiday-Home");
 		homePage.setWhereTo(ExcelReadWrite.data[0]);
+		logger.log(Status.INFO, "Giving value for Destination");
 		homePage.selectDestination();
+		
+		
+			try {
+                              ScreenShot.takeSnapShot(driver);
+			} catch (Exception e) {
+                              e.printStackTrace();
+			}
+		
+		logger.log(Status.INFO, "Choose Destination From Drop-down menu");
+		logger.log(Status.PASS, "Data Passed Successfully");
+		
+	   }catch (Exception e) {
+			FailReport.reportFail(e.getMessage());
+		}
 	}
 	
 	@Test (priority=2, groups= {"Smoke Test One"})
 	public void checkInDate() {
+		logger = report.createTest("Giving value for Check-In and Check-Out Date");
+	try{	
 		holidayHomes.checkInDateClick();
+		logger.log(Status.INFO, "Selecting Check-In Date");
 		holidayHomes.setCheckInDate(ExcelReadWrite.data[1]);
+		
+		     try {
+                              ScreenShot.takeSnapShot(driver);
+			} catch (Exception e) {
+                              e.printStackTrace();
+			}
+		
+		logger.log(Status.INFO, "Selecting Check-Out Date");
+		logger.log(Status.PASS, "Dates has been selected Successfully")
+	   }catch (Exception e) {
+			FailReport.reportFail(e.getMessage());
+		}	
 	}
 	
 	@Test (priority =3, groups= {"Smoke Test One"})
