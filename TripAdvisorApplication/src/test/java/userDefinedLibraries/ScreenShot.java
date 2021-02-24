@@ -38,7 +38,7 @@ public class ScreenShot {
 		File sourceFile = ((TakesScreenshot) ldriver).getScreenshotAs(OutputType.FILE);
 		
 		File destFile = new File(
-				System.getProperty("user.dir") + "\\screenshot\\" + System.currentTimeMillis() + ".png");
+				System.getProperty("user.dir") + "\\FailScreenshot\\" + System.currentTimeMillis() + ".png");
 		try { 
 			//copy the screenshot to desired location using copyFile method
 			FileUtils.copyFile(sourceFile, destFile);
