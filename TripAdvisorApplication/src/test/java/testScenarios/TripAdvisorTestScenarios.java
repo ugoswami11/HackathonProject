@@ -126,21 +126,44 @@ public class TripAdvisorTestScenarios {
 	
 	@Test (priority = 5, groups= {"Regression Test One"})
 	public void sortBy() {
-		logger = report.createTest("Giving value for Guest");
+		logger = report.createTest("Sort Hotel names");
 	try{	
 		holidayHomes.sortByDropdown();
+		logger.log(Status.INFO, "Sort Hotel names from Drop-down");
 		holidayHomes.sortByOptions(ExcelReadWrite.data[3]);
+		logger.log(Status.INFO, "Selecting the Value for sort");
+		logger.log(Status.PASS, "Sorting done Successfully")
+	   }catch (Exception e) {
+			FailReport.reportFail(e.getMessage());
+		}
 	}
 	
 	@Test (priority = 6, groups= {"Regression Test One"})
 	public void liftAccess() {
+		logger = report.createTest("Clicking on lift access Check-Box");
+	try{	
+	
 		holidayHomes.showMoreBox();
+		logger.log(Status.INFO, "Clicking on Show More");
 		holidayHomes.liftAccessCheckbox();
+		
+        		try {
+                              ScreenShot.takeSnapShot(driver);
+			} catch (Exception e) {
+                              e.printStackTrace();
+			}
+		
+		logger.log(Status.INFO, "Checked on Lift access Check box");
+		logger.log(Status.PASS, "Data checked Successfully")
+	   }catch (Exception e) {
+			FailReport.reportFail(e.getMessage());
+		}
 	}
 	
 	@Test (priority = 7, groups= {"Regression Test One"})
 	public void hotelNames() {
-		
+		logger = report.createTest("Featching Top-3 Hotel Names Based on filters");
+	try{	
 		String temp = ExcelReadWrite.data[5].substring(0, 1);
 		listSize = Integer.parseInt(temp);
 		
@@ -150,76 +173,193 @@ public class TripAdvisorTestScenarios {
 		for(int i=0;i<text.length;i++) {
 			System.out.println(text[i]);
 		}
+		logger.log(Status.INFO, "Top-3 Hotel names have been selected");
+		logger.log(Status.PASS, "Top-3 Hotel names have been written Successfully");
+		
+	  }catch (Exception e) {
+			FailReport.reportFail(e.getMessage());
+		}
+		
 	}
 	
 	@Test (priority = 8, groups= {"Regression Test One"})
 	public void totalPrice() {
+		logger = report.createTest("Featching Top-3 Hotel's Total-Price Based on filters");
+	try{
 		String[] text = new String[listSize];
 		text = holidayHomes.getTotalPrice(listSize);
 		
 		for(int i=0;i<text.length;i++) {
 			System.out.println(text[i]);
 		}
+		logger.log(Status.INFO, "Top-3 Hotel's Total-Price have been selected");
+		logger.log(Status.PASS, "Top-3 Hotel's Total-Price have been written Successfully");
+		
+	  }catch (Exception e) {
+			FailReport.reportFail(e.getMessage());
+		}
 	}
 	
 	@Test (priority =9, groups= {"Regression Test One"})
 	public void pricePerNight() {
+		logger = report.createTest("Featching Top-3 Hotel's Price Per Night Based on filters");
+	try{
 		String[] text = new String[listSize];
 		text = holidayHomes.getPerNightPrice(listSize);
 		
+	     // Please check its working or not
+		try {
+                              ScreenShot.takeSnapShot(driver);
+			} catch (Exception e) {
+                              e.printStackTrace();
+			}
+		
 		for(int i=0;i<text.length;i++) {
 			System.out.println(text[i]);
+		}
+		logger.log(Status.INFO, "Top-3 Hotel's Price Per Night have been selected");
+		logger.log(Status.PASS, "Top-3 Hotel's Price Per Night have been written Successfully");
+		
+	  }catch (Exception e) {
+			FailReport.reportFail(e.getMessage());
 		}
 	}
 	
 	@Test (priority= 10, groups= {"Smoke Test Two"})
 	public void cruises() {
+		logger = report.createTest("Clicking On Cruises Tab");
+	try{
 		holidayHomes.cruisesTab();
+		logger.log(Status.INFO, "Cruises tab has been clicked");
+		logger.log(Status.PASS, "Cruises tab has been clicked Successfully");
+		
+	  }catch (Exception e) {
+			FailReport.reportFail(e.getMessage());
+		}
 	}
 	
 	@Test (priority =11, groups= {"Smoke Test Two"})
 	public void cruiseLine() {
+		logger = report.createTest("Selecting Value for Cruise Line");
+	try{
 		cruises.cruiseLineDropDown();
+		logger.log(Status.INFO, "Cruise Line Drop-down has been Visible");
 		cruises.cruiseLineDropDownElements(ExcelReadWrite.data[6]);
+		logger.log(Status.INFO, "Cruise Line Value has been Selected from drop-down");
+		logger.log(Status.PASS, "Cruise Line Value has been Selected from drop-down Successfully");
+		
+	  }catch (Exception e) {
+			FailReport.reportFail(e.getMessage());
+		}
 	}	
 	
 	@Test (priority = 12, groups= {"Smoke Test Two"})
 	public void cruiseShip() {
+		logger = report.createTest("Selecting Value for Cruise Ship");
+	try{
 		cruises.cruiseShipDropDown();
+		logger.log(Status.INFO, "Cruise Ship Drop-down has been Visible");
 		cruises.cruiseShipDropDownElements(ExcelReadWrite.data[7]);
+		logger.log(Status.INFO, "Cruise Ship Value has been Selected from drop-down");
+		logger.log(Status.PASS, "Cruise Ship Value has been Selected from drop-down Successfully");
+		    try {
+                          ScreenShot.takeSnapShot(driver);
+			} catch (Exception e) {
+                              e.printStackTrace();
+			}
 		cruises.searchCruises();
+		logger.log(Status.INFO, "Clicking On Search Button");
+		logger.log(Status.PASS, "The Page is loaded Successfully Based on Crusies information");
+		
+	  }catch (Exception e) {
+			FailReport.reportFail(e.getMessage());
+		}
 	}
 	
 	@Test (priority = 13, groups= {"Smoke Test Two"})
 	public void changeWindow() {
+		logger = report.createTest("Moving To the new Window");
+	try{
 		cruises.changeWindowHandle();
+		
+	        try {
+                          ScreenShot.takeSnapShot(driver);
+			} catch (Exception e) {
+                              e.printStackTrace();
+			}
+		
+		logger.log(Status.INFO, "A new Window opened");
+		logger.log(Status.PASS, "A new window has been opened successfully");
+		
+	  }catch (Exception e) {
+			FailReport.reportFail(e.getMessage());
+		}
 	}
 	
 	@Test (priority = 14, groups= {"Regression Test Two"})
 	public void PassengerCrewValue() {
 		
+		logger = report.createTest("Featching the value of Passenger & Crew");
+	try{
 		cruises.getpassengerAndCrew();
 		System.out.println(cruises.passenger+"\t"+cruises.crew);
+		logger.log(Status.INFO, "Passenger & Crew's value have been featched");
+		logger.log(Status.PASS, "Passenger & Crew's value have been written successfully");
+		
+	  }catch (Exception e) {
+			FailReport.reportFail(e.getMessage());
+		}
 	}
 	
 	@Test (priority = 15, groups= {"Regression Test Two"})
 	public void launchedYearValue() {
+		
+		logger = report.createTest("Featching the value of Launched Year");
+	try{
 		String text = cruises.setLaunchedYear();
 		System.out.println(text);
+		
+		try {
+                          ScreenShot.takeSnapShot(driver);
+			} catch (Exception e) {
+                              e.printStackTrace();
+			}
+		
+		logger.log(Status.INFO, "Launched Year value has been featched");
+		logger.log(Status.PASS, "Launched Year value has been written successfully");
+		
+	  }catch (Exception e) {
+			FailReport.reportFail(e.getMessage());
+		}
 	}
 	
 	@Test(priority = 16, groups= {"Regression Test Two"})
 	public void languageValue() {
+		logger = report.createTest("Featching the value of Languages");
+	try{
 		languages = cruises.getLanguages();
 		
 		for(int i=0;i<languages.length;i++) {
 			System.out.println(languages[i]);
 		}
+		logger.log(Status.INFO, "Languages value have been featched");
+		logger.log(Status.PASS, "Languages value have been written successfully");
+		
+	  }catch (Exception e) {
+			FailReport.reportFail(e.getMessage());
+		}
 	}
 	
 	@AfterGroups ("Regression Test Two")
 	public void closeBrowser() {
+		logger = report.createTest("Closing the Browser");
+	try{
 		DriverSetup.driverClose();
+		logger.log(Status.PASS, "Browser has been closed successfully");
+		
+	  }catch (Exception e) {
+			FailReport.reportFail(e.getMessage());
+		}
 	}
 	
 }
