@@ -45,11 +45,13 @@ public class CruisesPage {
 		this.driver = driver;
 		wait = new WebDriverWait(driver, 30);
 	}
-
+	
+	//To click on the Cruise Line dropdown button
 	public void cruiseLineDropDown() {
 		cruiseLine.click();
 	}
-
+	
+	//To select the input from the Cruise Line dropdown options
 	public void cruiseLineDropDownElements(String cruiseLineValue) {
 
 		wait.until(ExpectedConditions.visibilityOfAllElements(cruiseLineElements));
@@ -61,11 +63,13 @@ public class CruisesPage {
 			}
 		}
 	}
-
+	
+	//To click on the Cruise Ship dropdown button
 	public void cruiseShipDropDown() {
 		cruiseShip.click();
 	}
 
+	//To select the input from the Cruise Ship dropdown options
 	public void cruiseShipDropDownElements(String cruiseShipValue) {
 
 		wait.until(ExpectedConditions.visibilityOfAllElements(cruiseShipElements));
@@ -78,6 +82,7 @@ public class CruisesPage {
 		}
 	}
 
+	//To click on the Search button
 	public void searchCruises() {
 		try {
 			Thread.sleep(3000);
@@ -88,16 +93,16 @@ public class CruisesPage {
 		searchCruises.click();
 	}
 
+	//To get the number of passengers and crew members for the selected cruise
 	public void getpassengerAndCrew() {
 		String passengerNcrew = passengersAndCrew.getText();
 
 		passenger = passenger + passengerNcrew.substring(12, 15);
-//	    System.out.println(passenger);
 
 		crew = crew + passengerNcrew.substring(28, passengerNcrew.length());
-//	    System.out.println(crew);
 	}
 
+	//To get the launch year for the selected cruise
 	public String setLaunchedYear() {
 		String launchYearText = launchedYear.getText();
 
@@ -106,6 +111,7 @@ public class CruisesPage {
 		return launchedYearText;
 	}
 
+	//To get the languages available for the selected cruise
 	public String[] getLanguages() {
 		int size = languageElements.size();
 		String s;
@@ -117,6 +123,7 @@ public class CruisesPage {
 		return languages;
 	}
 
+	//To perfom window handling
 	public void changeWindowHandle() {
 		// It will return the parent window name as a String
 		String parent = driver.getWindowHandle();
