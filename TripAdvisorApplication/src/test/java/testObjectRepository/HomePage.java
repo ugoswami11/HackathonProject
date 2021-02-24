@@ -26,19 +26,22 @@ public class HomePage {
 	@FindBy(how = How.XPATH, using = "//div[@class='_27pk-lCQ']/a")
 	public List<WebElement> whereToDropDown; 							//locate "Where To" dropdown
 	
+	//waits untill the page get loaded
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
-		wait = new WebDriverWait(driver,30);							//waits untill the page get loaded
+		wait = new WebDriverWait(driver,30);							
 	}
-	
+	//clicking on "Holiday Homes" button
 	public void holidayHomeButton() {
-		holidayHomesBtn.click();								//clicking on "Holiday Homes" button
+		holidayHomesBtn.click();								
 	}
 	
+	//waits until "Where To" search box is visible
+	//sending value to the "Where To" search box
 	public void setWhereTo(String destinationName) {
-		wait.until(ExpectedConditions.visibilityOf(whereTo));					//waits until "Where To" search box is visible
+		wait.until(ExpectedConditions.visibilityOf(whereTo));					
 		
-		whereTo.sendKeys(destinationName);							//sending value to the "Where To" search box
+		whereTo.sendKeys(destinationName);							
 		try {
 			Thread.sleep(4000);
 		} catch (InterruptedException e) {
@@ -46,10 +49,10 @@ public class HomePage {
 			e.printStackTrace();
 		}
 	}
-	
+	//clicking on the option present in the "Where To" dropdown
 	public void selectDestination() {
 		wait.until(ExpectedConditions.visibilityOfAllElements(whereToDropDown));
-		whereToDropDown.get(0).click();								//clicking on the option present in the "Where To" dropdown
+		whereToDropDown.get(0).click();								
 
 	}
 	
