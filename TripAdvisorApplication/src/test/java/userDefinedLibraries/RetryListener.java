@@ -1,5 +1,9 @@
 package userDefinedLibraries;
 
+/*
+ *  RetryListener Class catches the fail status of method and run them again
+ */
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
@@ -12,6 +16,7 @@ public class RetryListener implements IAnnotationTransformer {
 	@SuppressWarnings("rawtypes")
 	public void transform(ITestAnnotation testannotation, Class testClass, Constructor testConstructor,
 			Method testMethod) {
+		@SuppressWarnings("deprecation")
 		IRetryAnalyzer retry = testannotation.getRetryAnalyzer();
 		if (retry == null) {
 			testannotation.setRetryAnalyzer(RetryFailedTestCases.class);
