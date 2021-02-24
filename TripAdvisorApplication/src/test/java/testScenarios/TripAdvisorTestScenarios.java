@@ -110,13 +110,24 @@ public class TripAdvisorTestScenarios {
 	
 	@Test (priority =4, groups= {"Smoke Test One"})
 	public void setGuest() {
+		
+		logger = report.createTest("Giving value for Guest");
+	try{
 		holidayHomes.guestButton();
+		logger.log(Status.INFO, "Adding Guests");
 		holidayHomes.addPerson(ExcelReadWrite.data[4]);
 		holidayHomes.applyButton();
+		logger.log(Status.INFO, "Clicking On Apply Button");
+		logger.log(Status.PASS, "Guests added Successfully")
+	   }catch (Exception e) {
+			FailReport.reportFail(e.getMessage());
+		}
 	}
 	
 	@Test (priority = 5, groups= {"Regression Test One"})
 	public void sortBy() {
+		logger = report.createTest("Giving value for Guest");
+	try{	
 		holidayHomes.sortByDropdown();
 		holidayHomes.sortByOptions(ExcelReadWrite.data[3]);
 	}
