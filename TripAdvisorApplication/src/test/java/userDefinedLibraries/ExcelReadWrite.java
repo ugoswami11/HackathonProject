@@ -1,6 +1,6 @@
 package userDefinedLibraries;
 
-
+//Import all necessary Libraries
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,6 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+//To utilize the data from the Excel and return the outputs in the Excel
 public class ExcelReadWrite {
 
 	public static File src;
